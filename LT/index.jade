@@ -1,0 +1,101 @@
+!!! 5 
+// Google HTML5 slide template   
+// Authors: Luke Mahé (code)
+//          Marcin Wichary (code and design)
+//          Dominic Mazzoni (browser compatibility)
+//          Charles Chen (ChromeVox support)  
+// URL: http://code.google.com/p/html5slides/
+html
+  head
+    title 
+    meta(charset="utf-8")
+    script(src="./slides.js")
+
+  body(style='display: none')
+    section(class="slides layout-regular template-default")  
+
+      article
+        h1 GitHubで快適コードリーディング
+
+      article
+        h1 ハスケラはコードリーディングをした
+
+      article
+          img(style="width: 800px", src="images/pokemon.jpg")
+
+      article
+        h1 読む、打つ、買うは技術者の基本
+        ul.build
+          li コードを読む
+          li キーボードを打つ
+          li 技術書を買う
+
+      article
+        h1 「呑む」も熱く語れるけど、今回は「読む」で
+
+      article
+        h1: a(href="http://fitzgen.github.com/pycco/") Pycco
+        pre pycco app.js
+        p みたいにやると
+
+      article
+        h3 ソースコード中のコメントを
+        img(style="width: 600px", src="images/sample_code.png")
+
+      article
+        h3 htmlに変換してくれる(doc/に出力される)
+        img(style="width: 900px", src="images/pycco_scr.png")
+
+      article
+        h3 超便利!
+        p サポートされている言語が多い。
+
+        table
+          tr
+            th supported language
+            th supported language
+          tr
+            td CoffeeScript
+            td Perl
+          tr
+            td SQL
+            td C
+          tr
+            td C++
+            td Javascript
+          tr
+            td Ruby
+            td Python
+          tr
+            td Scheme
+            td Lua
+          tr
+            td Erlang
+            td Haskell <- pull reqed by kzfm
+
+      article
+        h3 ちょっとしたコツ
+        p 階層構造を保ったままhtml化するには
+        pre find . -name "*.py" -print0| xargs -0 pycco -p
+        p とxargsするのがいい
+
+      article
+        h1 GitHubと組み合わせるともっと便利
+        ul.build
+          li 読みたいプロジェクトをフォークする
+          li クローンして、ソースコードにコメント入れながら読んでいく
+          li pyccoでhtmlに変換
+          li gh-pagesというブランチに移せば公開できる
+
+      article
+        h3 コードとリーディングの成果と公開がまとめて管理できる
+        img(style="width: 900px", src="images/pycco_gh.png")
+      
+      article
+        h3 おや、Shizudeverの　ようすが、、、、、
+        img(style="width: 800px", src="images/evol.png")
+
+      article
+        h1 というわけでいい感じに進化してください!
+        p おしまい
+
