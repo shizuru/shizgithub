@@ -1,0 +1,161 @@
+!!! 5 
+// Google HTML5 slide template   
+// Authors: Luke Mahé (code)
+//          Marcin Wichary (code and design)
+//          Dominic Mazzoni (browser compatibility)
+//          Charles Chen (ChromeVox support)  
+// URL: http://code.google.com/p/html5slides/
+html
+  head
+    title 
+    meta(charset="utf-8")
+    script(src="./slides.js")
+
+  body(style='display: none')
+    section(class="slides layout-regular template-default")  
+
+      article
+        h1 静岡Developers勉強会(GitHubハンズオン)
+        h2 Push Step GitHub
+        p kzfm (Sep 1, 2012)
+
+      article
+        h3 はじめに
+        p 資料は
+          a(href="https://github.com/kzfm/shizgithub") GitHub
+          にあります
+        pre git clone git@github.com:kzfm/shizgithub.git
+        p またはzipでダウンロード
+        p 簡易HTTPサーバーはpythonの場合
+        pre.
+          cd slides
+          python -m SimpleHTTPServer
+          # http://localhost:8000/にアクセスするとスライドが始まります
+
+      article
+        h3 自己紹介
+        ul
+          li twitter:kzfm
+          li http://blog.kzfmix.com
+          li Python,CoffeeScript,(Haskell見習い)
+          li 薬をつくる会社で研究とかインフラ構築とか
+          img(style="width: 400px", src="images/1py1.jpg")
+
+      article
+        h1 今日やること
+        ul.build
+          li リモートリポジトリの作成
+          li GitHubのアカウント登録
+          li SSHの設定
+          li リポジトリの作成とpush
+          li gh-pages
+
+      article
+        h3 リモートリポジトリを作成
+        pre git init --bare 
+        p bareオプションを使うと作業ディレクトリ無しのリポジトリが作られる
+        pre $ git init --bare
+          | Initialized empty Git repository in /Users/kzfm/tmp/testrepo/
+        p 作ったリポジトリをoriginに指定して、pushする
+        pre $ cd [repos] # 既存のリポジトリに移動
+          | $ git remote add origin [bareで作ったリポジトリ]
+          | $ git push origin master
+        p こんなかんじで管理専用リポジトリを設定できる
+
+      article
+        h3 ありがちなパターン(さくらのVPSとか)
+        p サイト管理(/var/www/htmlで静的ファイルを管理)
+        img(style="width: 800px", src="images/serv1.jpg")
+
+      article
+        h3 外部サービスを使う
+        p 今回はGitHub
+        img(style="width: 800px", src="images/serv2.jpg")       
+
+      article
+        h3 GitHubとは
+        p Gitのリポジトリホスティングサービス(+アルファ)
+        p とりあえずGitのリポジトリサービスとして使えるようになりましょう。
+        p (+アルファ)の機能はあとで説明
+
+      article
+        h3 アカウントの登録
+        p githubのページに行ってSignup and Pricingからcreate a free accountをクリックします。
+        p わからなかったら聞いてください
+
+      article
+        h3 SSHの設定
+        ul
+          li: a(href="https://help.github.com/articles/generating-ssh-keys") Generating SSH Keys 
+                を読みましょう
+          li macやlinuxはssh-keygenがつかえます
+          li winなヒトはputtyとか使うみたいです(help please)。
+
+      article
+        h3 前のセッションでつくったリポジトリをGitHubで管理してみよう
+        p やってみなはれ
+        img(style="width: 800px", src="images/githubrepo2.png")       
+
+      article
+        h3 create repositoryをクリックするとその後の手順がでてくる
+        img(style="width: 800px", src="images/githubrepo1.png")       
+
+      article
+        h3 forkとcloneの違い
+        ul.build
+          li 単に使うだけだったらclone
+          li 独自にコードを追加したりして自分用の開発リポジトリを用意するならfork
+          p forkは既存のコードに手を加えて新しい自分用のリポジトリをメンテナンスしていく感じ。
+            |本家に取り込んでもらうためにはpull requestを送ればいいので、本家にコミット権がなくても自由に開発できる。
+
+      article
+        h3 pageの公開
+        p gh-pagesというブランチをつくるとhttp://[username].github.com/[project]というurlでwebの公開ができるのでこれもやってみよう。
+        pre git checkout -b gh-pages
+          | vim index.html
+          | git commit -am "add index page"
+          | git push origin gh-pages
+
+      article
+        h3 GitHubを使って独りで開発はOKですね
+        img(style="width: 800px", src="images/serv3.jpg")       
+
+      article
+        h1 ソーシャルな部分の説明
+        ul
+          li フォローの機能
+          li wiki(分かるので省略)
+          li Issue
+          li pullリクエスト
+
+      article
+        h3 プロジェクトとヒトのフォロー
+        img(style="width: 600px", src="images/fol.png")       
+        h3 twitterと同じ
+        p フォローしているヒトやプロジェクトのアクティビティをRSSで購読できるようになる
+        ul.build
+          li リポジトリをフォロー
+          li ヒトをフォロー
+          li (イケてるプロジェクトをつくるヒトはイケてる)
+
+      article
+        h3 Issueとは
+        p バグレポートとか機能の要望等議論されるべきもの
+        ul.build
+          li 追いかけてるプロジェクトのIssueは大体読むようになる
+          li バグを見つけたら既知かどうか調べて新規バグの場合はレポートするとよい
+          li 基本的に英語なので自分のプロジェクトのコミットログなんかも英語で書いとくほうがよい
+
+      article
+        h3 Pull Requestとは
+        p 自分のコードを相手のコードにマージしてもらうための手段。自分だけのフォークを管理するだけだったらpull requestをおくる必要はない
+        ul.build
+          li 相手に取り込んでもらえるようにお願いする
+          li Issueとしても登録される。
+          li なぜそのコードを取り込む必要があるのか納得できる説明と、コードのお作法やブランチの切り方のルールがあればそれに従ったりする
+          li 続きは次のセッションで
+
+      article
+        h1 GitHubをある程度使えるようになったはず
+        p Enjoy!
+
