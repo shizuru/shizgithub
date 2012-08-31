@@ -16,9 +16,10 @@ html
 
       article
         h1 GitHubで快適コードリーディング
+        p kzfm@最近Haskell風味
 
       article
-        h1 ハスケラはコードリーディングをした
+        h1 プログラマはコードリーディングをした
 
       article
           img(style="width: 800px", src="images/pokemon.jpg")
@@ -31,12 +32,18 @@ html
           li 技術書を買う
 
       article
-        h1 「呑む」も熱く語れるけど、今回は「読む」で
+        h3 「呑む」も語れるけど、今回は「読む」で
+          img(style="width: 800px", src="images/sake.jpg")
+
+      article
+        h1 今回、読むためのツールを1つ紹介します
+        p pycco(python製、インストールとかはググれ)
+        pre easy_install pycco
 
       article
         h1: a(href="http://fitzgen.github.com/pycco/") Pycco
         pre pycco app.js
-        p みたいにやると
+        p みたいにコマンドを叩くと(あら不思議!?)
 
       article
         h3 ソースコード中のコメントを
@@ -80,17 +87,23 @@ html
         p とxargsするのがいい
 
       article
-        h1 GitHubと組み合わせるともっと便利
+        h3 GitHubと組み合わせるともっと便利
         ul.build
           li 読みたいプロジェクトをフォークする
           li クローンして、ソースコードにコメント入れながら読んでいく
           li pyccoでhtmlに変換
+          li git addしてgit push
           li gh-pagesというブランチに移せば公開できる
 
       article
-        h3 コードとリーディングの成果と公開がまとめて管理できる
+        h3 コードとリーディングの成果と公開がまとめて管理できる(例はSpine.js)
         img(style="width: 900px", src="images/pycco_gh.png")
       
+      article
+        h2 困った点
+        p index.htmlが作られないので自分で書くか、補助スクリプトを書くかしないといけない。
+        p GitHubらしく、forkして機能追加したオレオレpyccoを用意すればいいんじゃないかな。
+
       article
         h3 おや、Shizudeverの　ようすが、、、、、
         img(style="width: 800px", src="images/evol.png")
@@ -98,4 +111,3 @@ html
       article
         h1 というわけでいい感じに進化してください!
         p おしまい
-
